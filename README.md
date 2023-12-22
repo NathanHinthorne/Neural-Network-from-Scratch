@@ -1,5 +1,5 @@
 ## NOTE 
-This code is adapted from [The Independent Code](https://www.youtube.com/watch?v=pauPCy_s0Ok). While I followed the video closely, I took the time to pause and delve into the details and reasoning behind every formula. This often required hours of further research on the subject. I pondered what it all meant and got an intuitive feel for the math which was occuring behind the scenes in neural networks.
+This code is adapted from [The Independent Code](https://www.youtube.com/watch?v=pauPCy_s0Ok). While I followed the video closely, I took the time to pause and delve into the details and reasoning behind every formula. This often required hours of further research on the subject. I pondered what it all meant and got an intuitive feel for the math which was occurring behind the scenes in neural networks.
 
 <br />
 
