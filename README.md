@@ -16,7 +16,7 @@ A partial derivative of a function of several variables is its derivative with r
 
 Neural networks learn by updating their weights and biases in the direction that minimizes the loss function. This process is known as gradient descent. The gradient points in the direction of the steepest ascent in the error surface, and the weights and biases are updated in the opposite direction of the gradient to minimize the error.
 
-### Q&A
+### Q & A
 
 **Q: How is the gradient used in neural networks?**
 
