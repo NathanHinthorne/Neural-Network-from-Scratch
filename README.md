@@ -20,7 +20,21 @@ Neural networks learn by adjusting their weights and biases to minimize the loss
 
 We don't have a complete view of the cost function. We use the results from each forward propagation of the cost function to determine the direction to step in. While the cost function outputs a single value indicating the neural network's performance, the backpropagation process uses the cost function's gradient with respect to the weights. This gradient provides a wealth of information about how to adjust each weight in the network to enhance performance. Each partial derivative in the gradient indicates how much the cost function changes when the corresponding weight is tweaked slightly. By calculating the gradient, we get a direction in the high-dimensional space of weights. Adjusting the weights in the opposite direction of the gradient allows us to decrease the cost function as quickly as possible. This is why a single value (the cost function) is sufficient to improve the entire network of neurons.
 
-## Q & A
+### Formulas Used in Back-propagation
+
+1. The weights gradient is the derivative of the loss function with respect to the weights. It's calculated as the dot product of the output gradient and the transpose of the input. This is derived from the chain rule of calculus, which states that the derivative of a composite function is the product of the derivative of the outer function and the derivative of the inner function. Here, the outer function is the loss function and the inner function is the output of this layer.
+
+    $$\frac{\partial L}{\partial W} = \frac{\partial L}{\partial Y} \cdot X^t$$
+
+2. The bias gradient is the derivative of the loss function with respect to the biases. It's simply the output gradient because the derivative of the output with respect to the biases is 1. This means that the rate of change of the loss function with respect to the biases is the same as the rate of change of the loss function with respect to the output.
+
+    $$\frac{\partial L}{\partial B} =\frac{\partial L}{\partial Y}$$
+
+3. The input gradient is the derivative of the loss function with respect to the input. It's calculated as the dot product of the transpose of the weights and the output gradient. This is also derived from the chain rule of calculus. The input gradient tells us how much the loss function would change if we changed the inputs slightly.
+
+    $$\frac{\partial L}{\partial X} = W^t \cdot \frac{\partial L}{\partial Y}$$
+
+# Q & A
 
 **Q: How is the gradient used in neural networks?**
 
