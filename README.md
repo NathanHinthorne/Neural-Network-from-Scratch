@@ -1,35 +1,41 @@
 ## NOTE 
-This code is adapted from https://www.youtube.com/watch?v=pauPCy_s0Ok - "The Independent Code"
+This code is adapted from [The Independent Code](https://www.youtube.com/watch?v=pauPCy_s0Ok). While I followed the video closely, I took the time to pause and delve into the details and reasoning behind every formula. This often required hours of further research on the subject. I pondered what it all meant and got an intuitive feel for the math which was occuring behind the scenes in neural networks.
 
-Although I followed the video closely, I made sure to pause and learn the details and reasoning behind every single formula, which often required hours of further research on the subject.
+<br />
 
 
-## What I Learned
+# What I Learned
 
 ### Gradients and Partial Derivatives
 
-In the context of machine learning and neural networks, a gradient is a vector that contains the partial derivatives of a function with respect to its variables. It's a direction in which the function increases most rapidly from a particular point.
+In machine learning and neural networks, a gradient is a vector that holds the partial derivatives of a function with respect to its variables. It points in the direction where the function increases most rapidly.
 
-A partial derivative of a function of several variables is its derivative with respect to one of those variables, with the others held constant. For example, if you have a function `f(x, y)`, the partial derivative of `f` with respect to `x` is denoted as `∂f/∂x` or `f_x`, and it measures the rate at which the function changes with respect to `x` when `y` is held constant.
+A partial derivative of a function with several variables is its derivative with respect to one of those variables, while the others are held constant. For instance, if you have a function `f(x, y)`, the partial derivative of `f` with respect to `x` (denoted as `∂f/∂x` or `f_x`) measures the rate at which the function changes with respect to `x`, assuming `y` is constant.
+
+To visualize the gradient, imagine a 3D shape sliced by a plane on the x-axis and then on the y-axis. The intersection between the shape's surface and each plane forms two distinct curves. The slopes of these curves' tangent lines are plugged into the gradient vector as its components.
 
 ### How Neural Networks Learn
 
-Neural networks learn by updating their weights and biases in the direction that minimizes the loss function. This process is known as gradient descent. The gradient points in the direction of the steepest ascent in the error surface, and the weights and biases are updated in the opposite direction of the gradient to minimize the error.
+Neural networks learn by adjusting their weights and biases to minimize the loss function, a process known as gradient descent. The gradient points in the direction of steepest ascent on the error surface, and the weights and biases are updated in the opposite direction of the gradient to reduce the error.
 
-### Q & A
+We don't have a complete view of the cost function. We use the results from each forward propagation of the cost function to determine the direction to step in. While the cost function outputs a single value indicating the neural network's performance, the backpropagation process uses the cost function's gradient with respect to the weights. This gradient provides a wealth of information about how to adjust each weight in the network to enhance performance. Each partial derivative in the gradient indicates how much the cost function changes when the corresponding weight is tweaked slightly. By calculating the gradient, we get a direction in the high-dimensional space of weights. Adjusting the weights in the opposite direction of the gradient allows us to decrease the cost function as quickly as possible. This is why a single value (the cost function) is sufficient to improve the entire network of neurons.
+
+## Q & A
 
 **Q: How is the gradient used in neural networks?**
 
-A: The gradient is used to update the weights and biases of the neural network during the backpropagation step of training. The gradient points in the direction of the steepest ascent in the error surface, and the weights and biases are updated in the opposite direction of the gradient to minimize the error.
+A: In neural networks, the gradient is used during the backpropagation step of training. It points in the direction of steepest ascent on the error surface. The weights and biases are updated in the opposite direction of the gradient, which minimizes the error and improves the network's performance.
 
-**Q: What is the role of the learning rate in neural networks?**
+**Q: Why does the gradient always point in the direction of steepest ascent?**
 
-A: The learning rate is a hyperparameter that determines the step size when updating the weights and biases. A smaller learning rate means that the network will learn slowly, while a larger learning rate means that the network may learn quickly, but it may also overshoot the optimal solution.
+A: The gradient points in the direction of steepest ascent because of how it's calculated. To visualize this, consider a 3D shape. Imagine slicing this shape first with a plane on the x-axis, then with a plane on the y-axis. The intersection between the shape's surface and each plane forms two distinct curves. The tangent lines of these curves represent the steepest slope at that point on each curve. 
 
-**Q: How are the weights and biases updated in a neural network?**
+When these slopes are used as the components of the gradient vector, they inherently capture the direction of steepest ascent at that point. This is because the tangent lines represent the maximum rate of change of the function at that point along each axis. Therefore, a vector composed of these maximum rates of change along each axis will naturally point in the direction where the function increases most rapidly, which is the direction of steepest ascent.
 
-A: The weights and biases are updated using the gradients and the learning rate. The weights and biases are updated in the direction that minimizes the loss function, which is why the gradients are subtracted from the weights and biases.
+**Q: How do we know how to calculate the gradient of the cost function since we don't even know what the cost function looks like?**
 
-**Q: What is the chain rule and why is it important in neural networks?**
+A: We don't need a complete view of the cost function to calculate its gradient. We use the results from each forward propagation of the cost function to determine the direction to step in. The gradient of the cost function with respect to the weights gives us a direction in the high-dimensional space of weights. Adjusting the weights in the opposite direction of the gradient allows us to decrease the cost function as quickly as possible.
 
-A: The chain rule is a method for finding the derivative of composite functions, or functions that are made by combining one or more functions. It's crucial in neural networks because it allows us to compute the derivative of the loss function with respect to the weights and biases, which is necessary for updating the weights and biases during training.
+**Q: How does the cost function give enough info to modify weights? Doesn't the cost function just output a single value? Why is one value enough to improve the WHOLE network of neurons?**
+
+A: While the cost function outputs a single value indicating the neural network's performance, the backpropagation process uses the cost function's gradient with respect to the weights. This gradient provides a wealth of information about how to adjust each weight in the network to enhance performance. Each partial derivative in the gradient indicates how much the cost function changes when the corresponding weight is tweaked slightly. By calculating the gradient, we get a direction in the high-dimensional space of weights. Adjusting the weights in the opposite direction of the gradient allows us to decrease the cost function as quickly as possible. This is why a single value (the cost function) is sufficient to improve the entire network of neurons.
