@@ -13,7 +13,7 @@ class Dense(Layer):
         self.input = input
         return np.dot(self.weights, self.input) + self.bias
 
-    #* The most difficult part, uses 3 derivative formulas which YT videos explain (I still learned it, but will likely forget how they were found)
+    #* The most difficult part, uses 3 derivative formulas
     def backward(self, output_gradient, learning_rate):
         #* define the gradients (collection of partial derivatives) for the weight and bias parameters
         weights_gradient = np.dot(output_gradient, self.input.T)
